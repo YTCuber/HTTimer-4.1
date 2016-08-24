@@ -845,7 +845,7 @@ function importCode(){
 	displaySessions();
 	b=timer.version||false;
 	if(b!=a){
-		alert ("Der Export wurde mit Version "+a+" erstellt. Diese Version ist veraltet. Die fehlenden Variablen wurden erg�nzt. Manche Scramblertypen k�nnen ver�ndert sein. Der n�chste Export wird Dateien der aktuellen Version generieren; diese sind meistens r�ckw�rtskompatibel.");
+		alert ("Der Export wurde mit Version "+a+" erstellt. Diese Version ist veraltet. Die fehlenden Variablen wurden ergänzt. Manche Scramblertypen k�nnen ver�ndert sein. Der n�chste Export wird Dateien der aktuellen Version generieren; diese sind meistens r�ckw�rtskompatibel.");
 	}
 }
 
@@ -873,11 +873,11 @@ ziel={
 			if(ziel.ziele[timer.currentSession][i]<0)ziel.ziele[timer.currentSession][i]=0;
 		}
 		text+="<table style='color:black;'><tr><td>Type</td><td>Goal</td><td>Set</td></tr>"
-		+"<tr><td>Single</td><td>"+ziel.format(ziel.ziele[timer.currentSession][0],best)+"</td><td><button onclick='ziel.ziele[timer.currentSession][0]=prompt(\"Neues Ziel eingeben.\");ziel.display();'>Set</button></td></tr>"
-		+"<tr><td>Ao5</td><td>"+ziel.format(ziel.ziele[timer.currentSession][1],bestao5)+"</td><td><button onclick='ziel.ziele[timer.currentSession][1]=prompt(\"Neues Ziel eingeben.\");ziel.display();'>Set</button></td></tr>"
-		+"<tr><td>Ao12</td><td>"+ziel.format(ziel.ziele[timer.currentSession][2],besto12)+"</td><td><button onclick='ziel.ziele[timer.currentSession][2]=prompt(\"Neues Ziel eingeben.\");ziel.display();'>Set</button></td></tr>"
-		+"<tr><td>Ao50</td><td>"+ziel.format(ziel.ziele[timer.currentSession][3],bestao50)+"</td><td><button onclick='ziel.ziele[timer.currentSession][3]=prompt(\"Neues Ziel eingeben.\");ziel.display();'>Set</button></td></tr>"
-		+"<tr><td>Custom Aox</td><td>"+ziel.format(ziel.ziele[timer.currentSession][4],bestocustom)+"</td><td><button onclick='ziel.ziele[timer.currentSession][4]=prompt(\"Neues Ziel eingeben.\");ziel.display();'>Set</button></td></tr>";
+		+"<tr><td>Single</td><td>"+ziel.format(ziel.ziele[timer.currentSession][0],best)+"</td><td><button onclick='ziel.ziele[timer.currentSession][0]=prompt(\"Type in new goal.\");ziel.display();'>Set</button></td></tr>"
+		+"<tr><td>Ao5</td><td>"+ziel.format(ziel.ziele[timer.currentSession][1],bestao5)+"</td><td><button onclick='ziel.ziele[timer.currentSession][1]=prompt(\"Type in new goal.\");ziel.display();'>Set</button></td></tr>"
+		+"<tr><td>Ao12</td><td>"+ziel.format(ziel.ziele[timer.currentSession][2],besto12)+"</td><td><button onclick='ziel.ziele[timer.currentSession][2]=prompt(\"Type in new goal.\");ziel.display();'>Set</button></td></tr>"
+		+"<tr><td>Ao50</td><td>"+ziel.format(ziel.ziele[timer.currentSession][3],bestao50)+"</td><td><button onclick='ziel.ziele[timer.currentSession][3]=prompt(\"Type in new goal.\");ziel.display();'>Set</button></td></tr>"
+		+"<tr><td>Custom Aox</td><td>"+ziel.format(ziel.ziele[timer.currentSession][4],bestocustom)+"</td><td><button onclick='ziel.ziele[timer.currentSession][4]=prompt(\"Type in new goal.\");ziel.display();'>Set</button></td></tr>";
 		text+="</table>"+BR+"<div onclick='hide(\"ziele\")'>"+language.back+"</div>";
 		document.getElementById("ziele").innerHTML=text;
 	},
@@ -937,7 +937,7 @@ algsets={
 			}
 		}*/
 		text="";
-		text="<h2>Algorithmen</h2>";
+		text="<h2>Algorithms</h2>";
 		text+="Number of Sets: "+algsets.sets.length+"."+BR+"<img onclick='javascript:algsets.addSet()' src='icon/icon_+.png' alt='+'/>"+BR;
 		
 		for(let i=0;i<algsets.sets.length;++i){

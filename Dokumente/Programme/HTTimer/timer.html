@@ -90,7 +90,7 @@
 				</div>
 			</div>
 			<div class="main">
-				<div class="time" onclick="var a=prompt('Zeit manuell setzen');timer.zeit=Math.floor(+new Date()-a-80);stop();">
+				<div class="time" onclick="var a=prompt('Set time');if(a){timer.zeit=Math.floor(+new Date()-a-80);stop();}">
 					0.000
 				</div>
 				<div class="goal-time" style="visibility:hidden">
@@ -559,11 +559,18 @@
 			</div>
 			<div class="optionBottomContainer" id="hilfe9" style="visibility:hidden;">
 				<h3>Known Bugs</h3>
-				Look @ speedsolving.com in thead htTimer released for more information.
+				Look @ speedsolving.com in thead htTimer released for more information.<br/>
+				Or look on reddit.<br/>
+				You can use this:
+				<textarea>
+					Browser: NAME, VERSION
+					Bug description: PUT DESCRIPTION HERE
+					How important: RATE 1-5
+				</textarea>
 			</div>
 			<div class="optionBottomContainer" id="hilfe10" style="visibility:hidden;">
 				<h3>TODO-List</h3>
-				Look @ speedsolving.com in thead htTimer released for more information.
+				Quit cubing.
 			</div>
 			<div id="hilfe42"></div>
 		</div>
