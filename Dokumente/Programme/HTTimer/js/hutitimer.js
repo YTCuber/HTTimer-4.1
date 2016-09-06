@@ -31,10 +31,10 @@ colors["A"]="#A0A0A0";
 
 (function(){
 	var parts;
-	let s=window.location.search.substring(1).split('&');
+	var s=window.location.search.substring(1).split('&');
 	if(!s.length)return; 
 	window.$_GET={};
-	for(let i=0;i<s.length;++i){
+	for(var i=0;i<s.length;++i){
 		parts = s[i].split('=');
 		window.$_GET[unescape(parts[0])] = unescape(parts[1]);
 	}
@@ -48,7 +48,7 @@ rotationReducer={
 	keys:[["x y x'","z"],["x' y x","z'"],["y x y'","z'"],["y x' y'","z"]],
 	reduce:function(rots){
 		rots=rots.toLowerCase();
-		for(let i=0;i<rotationReducer.keys.length;++i){
+		for(var i=0;i<rotationReducer.keys.length;++i){
 			if(rotationReducer.keys[i][0]==rots){
 				rots=rotationReducer.keys[i][1];
 			}
@@ -65,13 +65,13 @@ rotationReducer2={
 		curState=[0,1,2,3,4,5];//RUFDBL 012345 R0 U1 F2 D3 B4 L5
 		curState2=curState;
 		rots=rots.split(" ");
-		for(let i=0;i<rots.length;++i){
+		for(var i=0;i<rots.length;++i){
 			//if(rots[i].match(/[xyz]{1}['2]?/)){
 			if(true){
-				let rep=1;
+				var rep=1;
 				if(rots[i][1]=="2")rep=2;
 				if(rots[i][1]=="'")rep=3;
-				for(let j=0;j<rep;++j){
+				for(var j=0;j<rep;++j){
 					if(rots[i][0]=="x"){
 						curState2[1]=curState[2];
 						curState2[2]=curState[3];
@@ -226,7 +226,7 @@ function stop(){
 		bestao5=format(currentaox(timer.config.results,5)),
 		besto12=format(currentaox(timer.config.results,12));
 		if(typeof ziel.ziele[timer.currentSession]=="undefined")ziel.ziele[timer.currentSession]=[0,0,0,0,0,0];
-		for(let i=0;i<ziel.ziele[timer.currentSession].length;++i){
+		for(var i=0;i<ziel.ziele[timer.currentSession].length;++i){
 			if(ziel.ziele[timer.currentSession][i]<0)ziel.ziele[timer.currentSession][i]=0;
 		}
 		document.getElementByClass("goal-time").innerHTML="<h4>Current Goals:</h4>Single:"+ziel.format(ziel.ziele[timer.currentSession][0],best)+BR+"Ao5:"+ziel.format(ziel.ziele[timer.currentSession][1],bestao5)+BR+"Ao12:"+ziel.format(ziel.ziele[timer.currentSession][2],besto12);
@@ -320,7 +320,7 @@ function format(s) {
 function displayTimes(){
 	var text;
 	text="<table><tr><td colspan='3'>Times</td></tr>";
-	for(let i=0;i<timer.config.results.length;++i){
+	for(var i=0;i<timer.config.results.length;++i){
 		zeit=timer.config.results[i].zeit,
 		scramble=timer.config.results[i].scramble,
 		penalty=timer.config.results[i].penalty;
@@ -417,7 +417,7 @@ function avg(times){//aox
 	min=+Infinity;
 	max=-Infinity;
 	sum=0;
-	for(let j=0;j<times.length;++j){
+	for(var j=0;j<times.length;++j){
 		if(times[j].zeit<min){
 			min=times[j].zeit;
 			minindex=j;
@@ -428,7 +428,7 @@ function avg(times){//aox
 		}
 	}
 
-	for(let i=0;i<times.length;++i){
+	for(var i=0;i<times.length;++i){
 		if(i!==minindex&&i!==maxindex){
 			sum+=times[i].zeit;
 		}
@@ -441,7 +441,7 @@ function average(times){//mox
 	var sum;
 	sum=0;
 
-	for(let i=0;i<times.length;++i){
+	for(var i=0;i<times.length;++i){
 		sum+=times[i].zeit;	
 	}
 
@@ -453,7 +453,7 @@ function minMaxTime(times){
 	min=+Infinity;
 	max=-Infinity;
 	
-	for(let j=0;j<times.length;++j){
+	for(var j=0;j<times.length;++j){
 		if(times[j].zeit<min){
 			min=times[j].zeit;
 			minindex=j;
@@ -478,9 +478,9 @@ function bestaox(times,x){
 	arr=[];
 	min=+Infinity;
 	
-	for(let i=0;i<times.length-x;++i){
+	for(var i=0;i<times.length-x;++i){
 		arr=[];
-		for(let j=0;j<x;++j){
+		for(var j=0;j<x;++j){
 			arr.push(times[i+j]);
 		}
 		minavg=avg(arr);
@@ -503,7 +503,7 @@ function currentaox(times,x){
 	
 	i=times.length-x;
 	arr=[];
-	for(let j=0;j<x;++j){
+	for(var j=0;j<x;++j){
 		arr.push(times[i+j]);
 	}
 	minavg=avg(arr);
@@ -748,7 +748,7 @@ function createSession(){
 function displaySessions(){
 	var text;
 	text="<select>";
-	for(let i=0;i<timer.sessions.length;++i){
+	for(var i=0;i<timer.sessions.length;++i){
 		text+="<option onclick='javascript:switchSession("+i+")'>Session "+(i+1)+"</option>";
 	}
 	text+="<option onclick='javascript:createSession();'>Add Session</option>";
@@ -771,7 +771,7 @@ function displayScrambler(a){
 	var text;
 	text="";
 	/*
-	for(let i=0;i<timer.scrambleTypes.length;++i){
+	for(var i=0;i<timer.scrambleTypes.length;++i){
 		if(optionbreaks[i]==1)text+="<h3>"+optiontexts[i]+"</h3>";
 		text+="<div class='scrambler-div' onclick='switchScrambler(\""+timer.scrambleTypes[i]+"\")'>"+timer.scrambleNames[i]+"</div>";
 	}
@@ -801,7 +801,7 @@ function generateExport(){
 
 	p+=BR;
 	
-	for(let i=0;i<timer.config.results.length;++i){
+	for(var i=0;i<timer.config.results.length;++i){
 		if(exportDesign==0){
 			p+=BR+(i+1)+".: ";
 			p+=format(timer.config.results[i].zeit)+" "+timer.config.results[i].scramble+BR;
@@ -869,7 +869,7 @@ ziel={
 		bestao50=format(bestaox(timer.config.results,50)),
 		bestocustom=format(bestaox(timer.config.results,timer.customAvg));
 		if(typeof ziel.ziele[timer.currentSession]=="undefined")ziel.ziele[timer.currentSession]=[0,0,0,0,0,0];
-		for(let i=0;i<ziel.ziele[timer.currentSession].length;++i){
+		for(var i=0;i<ziel.ziele[timer.currentSession].length;++i){
 			if(ziel.ziele[timer.currentSession][i]<0)ziel.ziele[timer.currentSession][i]=0;
 		}
 		text+="<table style='color:black;'><tr><td>Type</td><td>Goal</td><td>Set</td></tr>"
@@ -903,12 +903,12 @@ ziel={
 		maxtime=minMaxTime(timer.config.results).min*1.1;
 		startvalues=[maxtime,maxtime*1.1,maxtime*1.2*1.1,maxtime*1.3*1.2*1.1,maxtime*1.4*1.3*1.2*1.1,maxtime*1.4*1.3*1.2*1.1*1.5],
 		currentValue=0;
-		for(let j=0;j<5;++j){
+		for(var j=0;j<5;++j){
 			text+="<tr>";
 			currentValue=startvalues[j];
-			for(let i=0;i<20;++i){
+			for(var i=0;i<20;++i){
 				text+="<td>";
-				for(let k=0;k<i;k++)currentValue*=.97;
+				for(var k=0;k<i;k++)currentValue*=.97;
 				if(currentValue>currentValues[j])text+="<span style='background-color:green'>"+Math.round(currentValue)/1e3+"</span></td>";
 				if(currentValue<currentValues[j])text+="<span style='background-color:red'>"+Math.round(currentValue)/1e3+"</span></td>";
 				if(currentValue==currentValues[j])text+="<span style='background-color:yellow'>"+Math.round(currentValue)/1e3+"</span></td>";
@@ -930,9 +930,9 @@ algsets={
 		/*
 		text="<h2>Algorithmen</h2>";
 		text+="Es sind "+algsets.sets.length+" Sets eingetragen."+BR+"<button onclick='javascript:algsets.addSet()'>+</button>"+BR;
-		for(let i=0;i<algsets.sets.length;++i){
+		for(var i=0;i<algsets.sets.length;++i){
 			text+=algsets.setnames[i]+":<button onclick='javascript:algsets.addAlg("+i+")'>+</button>"+BR;
-			for(let j=0;j<algsets.sets[i].length;++j){
+			for(var j=0;j<algsets.sets[i].length;++j){
 				text+=(j+1)+".: "+algsets.formatAlg(algsets.sets[i][j])+"<button onclick='javascript:algsets.sets["+i+"]["+j+"]=algsets.turnAlg(algsets.sets["+i+"]["+j+"]);algsets.display();'>Invert</button><button onclick='javascript:algsets.sets["+i+"]["+j+"]=algsets.mirrorM(algsets.sets["+i+"]["+j+"]);algsets.display();'>Mirror M</button><button onclick='javascript:algsets.sets["+i+"]["+j+"]=algsets.mirrorS(algsets.sets["+i+"]["+j+"]);algsets.display();'>Mirror S</button><button onclick='javascript:algsets.sets["+i+"]["+j+"]=algsets.simplify(algsets.sets["+i+"]["+j+"]);algsets.display();'>Simplify</button><button onclick='javascript:algsets.sets["+i+"]["+j+"]=algsets.viewExecution(algsets.sets["+i+"]["+j+"]);'>View Execution</button><button onclick='javascript:algsets.edit("+i+","+j+");'>Edit</button>"+BR;
 			}
 		}*/
@@ -940,9 +940,9 @@ algsets={
 		text="<h2>Algorithms</h2>";
 		text+="Number of Sets: "+algsets.sets.length+"."+BR+"<img onclick='javascript:algsets.addSet()' src='icon/icon_+.png' alt='+'/>"+BR;
 		
-		for(let i=0;i<algsets.sets.length;++i){
+		for(var i=0;i<algsets.sets.length;++i){
 			text+=algsets.setnames[i]+":<img onclick='javascript:algsets.addAlg("+i+")' src='icon/icon_+.png' alt='+'/>"+BR;
-			for(let j=0;j<algsets.sets[i].length;++j){
+			for(var j=0;j<algsets.sets[i].length;++j){
 				cstate=(function(alg,undefined){
 					var cube,a,b;
 					cube=new Cube();
@@ -988,8 +988,8 @@ algsets={
 	cubeimage:function (state){
 		var text,color;
 		text="<div class='cube'>";
-		for(let i=0;i<state.length;++i){
-			for(let j=0;j<state[i].length;++j){
+		for(var i=0;i<state.length;++i){
+			for(var j=0;j<state[i].length;++j){
 				color=algsets.stickerColors[state[i][j]]||"white";
 				text+="<div class='sticker "+color+"'>&nbsp;</div>";
 			}
@@ -1055,7 +1055,7 @@ relayNumbers=[];
 function displayRelayOption(){
 	var text;
 	text="<button onclick='relayNumbers[1]=relayNumbers[5]=relayNumbers[16]=1;displayRelayOption();'>2x2-4x4</button>"+BR+"<button onclick='relayNumbers[1]=relayNumbers[5]=relayNumbers[16]=relayNumbers[17]=1;displayRelayOption();'>2x2-5x5</button>"+BR+BR;
-	for(let i=0;i<timer.scrambleTypes.length;++i){
+	for(var i=0;i<timer.scrambleTypes.length;++i){
 		if(typeof relayNumbers[i]==="undefined")relayNumbers[i]=0;
 		text+=(i+1)+".: "+timer.scrambleNames[i]+"&nbsp;";
 		if(relayNumbers[i]<1<<8){
@@ -1074,9 +1074,9 @@ function displayRelayOption(){
 
 function generateRelayCode(){
 	timer.relayCommand="";
-	for(let i=0;i<relayNumbers.length;++i){
+	for(var i=0;i<relayNumbers.length;++i){
 		if(relayNumbers[i]>0){
-			for(let j=0;j<relayNumbers[i];++j){
+			for(var j=0;j<relayNumbers[i];++j){
 				timer.relayCommand+=timer.scrambleTypes[i]+" ";
 			}
 		}
@@ -1118,8 +1118,9 @@ function importCstimer(code){
 musik={
 	server:{
 		load:function(){
-			var src=prompt("Geben Sie hier die URL ein.");
-			var type=false;
+			var src,type,src2,src3;
+			src=prompt("Put in the URL here."),
+			type=false;
 			src3=src.split(".");
 			src2=src3[src3.length-1];
 			switch(src2){
@@ -1155,7 +1156,7 @@ musik={
 			document.getElementById("musik2").innerHTML+='<iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/'+id+'?autoplay=1&fs=0&disablekb=1&loop=1&autohide=0&list='+list+'" frameborder="0"/>';
 		},
 		display:function(){
-			for(let i=0;i<musik.youtube.idlist.length;++i){
+			for(var i=0;i<musik.youtube.idlist.length;++i){
 				document.getElementById("youtubeonevideoload").innerHTML+='<iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed/'+musik.youtube.idlist[i]+'?autoplay=1&fs=0&disablekb=1&loop=1&autohide=0" frameborder="0"/>';
 			}
 		}
@@ -1165,8 +1166,8 @@ musik={
 function takeabreak(){
 	var time;
 	show('takeabreak');
-	time=prompt("How long? (seconds)");
-	setTimeout("hide('takeabreak');",time*1000);
+	time=prompt("How long? (milliseconds)");
+	setTimeout("hide('takeabreak');",time);
 	document.getElementById("takeabreak").innerHTML="<h1>Taking a break right now!</h1>"+BR+"For "+time+" seconds.";
 }
 

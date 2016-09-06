@@ -8,7 +8,7 @@ function relayScramble(command){
 	var out,cmd;
 	out="";
 	cmd=command.split(" ");
-	for(let i=0;i<cmd.length;i++){
+	for(var i=0;i<cmd.length;i++){
 		if(cmd[i]!=="relay")out+=getScrambles(cmd[i],0)+BR;
 	}
 	return out;
@@ -146,7 +146,7 @@ function getScrambles(type,relay){
 	scrambler["clock"]="Scrambler type is not available yet.";
 	scrambler["2x2x1"]=generateScramble(zweizweieins,1);
 	
-	for(let i=0;i<scrambler.length;++i)scrambler[i]=cube.cube.simplify(scrambler[i])||scrambler[i];
+	for(var i=0;i<scrambler.length;++i)scrambler[i]=cube.cube.simplify(scrambler[i])||scrambler[i];
 	
 	if(!!~(relay-1)){
 		scrambler["relay"]=relayScramble(timer.relayCommand);
